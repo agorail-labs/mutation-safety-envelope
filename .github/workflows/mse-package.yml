@@ -1,0 +1,26 @@
+name: MSE experimental npm artifact audit
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  package:
+    name: Package and external install (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - run: npm test && npm run build && npm run validate-schema
+      - name: Pack and verify the exact tarball in a clean external consumer
+        run: npm run smoke:pack
+        working-directory: package
