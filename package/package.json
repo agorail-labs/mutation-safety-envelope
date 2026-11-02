@@ -1,0 +1,46 @@
+{
+  "name": "@agorail-labs/mse-reference",
+  "version": "0.4.0-experimental.1",
+  "description": "Experimental MSE v0.4 admission, dependency and outcome reference implementation; no live billing or durable execution",
+  "type": "module",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agorail-labs/mutation-safety-envelope.git",
+    "directory": "package"
+  },
+  "homepage": "https://github.com/agorail-labs/mutation-safety-envelope",
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "agentic-commerce",
+    "commercial-mutation",
+    "admission",
+    "dependencies",
+    "experimental"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    },
+    "./schema": {
+      "default": "./schema/mse-core.schema.json"
+    }
+  },
+  "files": [
+    "dist/src/",
+    "schema/mse-core.schema.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "prepack": "node scripts/prepare-package.mjs",
+    "smoke:pack": "node scripts/smoke-pack.mjs"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "experimental"
+  }
+}
