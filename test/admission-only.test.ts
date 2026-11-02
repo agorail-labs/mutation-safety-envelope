@@ -29,7 +29,7 @@ describe("external durable-executor admission-only handoff", () => {
       return { coverage: expected.coverage, failures: [], stateRef: expected.stateRef };
     }, new Date(expected.evaluatedAt));
     expect(decision.kind).toBe("ADMISSION_PASSED");
-    if (decision.kind === "ADMISSION_PASSED") expect(decision.admissionReport).toEqual(expected);
+    if (decision.kind === "ADMISSION_PASSED") expect(decision.admissionReport).toEqual({ ...expected, evaluatedAt: new Date(expected.evaluatedAt).toISOString() });
     expect(reads).toBe(1);
   });
 
@@ -39,7 +39,7 @@ describe("external durable-executor admission-only handoff", () => {
     const decision = evaluateAdmissionOnly(proposal, quote, () => ({
       coverage: expected.coverage, failures: expected.failures, stateRef: expected.stateRef,
     }), new Date(expected.evaluatedAt));
-    expect(decision).toEqual({ kind: "ADMISSION_REFUSED", admissionRefusal: expected });
+    expect(decision).toEqual({ kind: "ADMISSION_REFUSED", admissionRefusal: { ...expected, evaluatedAt: new Date(expected.evaluatedAt).toISOString() } });
   });
 
   it("fails closed if a declared relation has no evaluator", () => {
