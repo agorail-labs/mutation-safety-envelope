@@ -5,8 +5,8 @@ import { spawnSync } from "node:child_process";
 
 const packageRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const repo = resolve(packageRoot, "..");
-const run = spawnSync("npm", ["run", "build"], { cwd: repo, stdio: "inherit", shell: process.platform === "win32" });
-if (run.status !== 0) throw Error("MSE root TypeScript build failed; refusing to pack");
+const run = spawnSync("npm", ["run", "build"], { cwd: repo, encoding: "utf8", shell: process.platform === "win32" });
+if (run.status !== 0) throw Error("MSE root TypeScript build failed; refusing to pack: " + run.stderr + run.stdout);
 
 const source = join(repo, "dist", "src");
 if (!existsSync(join(source, "index.js"))) throw Error("MSE package entrypoint missing from build output");
@@ -37,4 +37,4 @@ patch(target);
 mkdirSync(join(packageRoot, "schema"), { recursive: true });
 cpSync(join(repo, "schema", "mse-core.schema.json"), join(packageRoot, "schema", "mse-core.schema.json"));
 cpSync(join(repo, "LICENSE"), join(packageRoot, "LICENSE"));
-console.log("MSE experimental npm build prepared: actual compiled JS + declarations + normative schema");
+// Keep stdout clean: npm pack --json consumers must see JSON, not lifecycle messages.
