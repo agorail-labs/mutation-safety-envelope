@@ -123,6 +123,11 @@ different domains instantiate the same core without adding to it.
 
 ## Getting started
 
+Using the published experimental package instead of this repository's
+sources? See the [developer onboarding guide](docs/ONBOARDING.md) —
+`npm install @agorail-labs/mse-reference@experimental`, a runnable
+admission example, and how MSE composes with SCQ.
+
 ```bash
 npm install
 npm test                # current-contract tests
