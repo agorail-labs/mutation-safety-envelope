@@ -53,35 +53,26 @@ boundary without standardizing the underlying commerce domain.
 > standards body. It is an independent research proposal. See
 > [`/docs/DISCLAIMER.md`](docs/DISCLAIMER.md).
 
-## Two artifacts — published package vs. this source tree
+## Source tree and published npm artifacts
 
-These are **different artifacts**; do not assume behavior in one implies behavior in the
-other.
+The root development package and the installable npm reference package have **different version identifiers**. The authoritative installed behavior is always the exact npm artifact you select.
 
-- **Published npm package — `@agorail-labs/mse-reference@0.4.0-experimental.1`.** The frozen
-  experimental snapshot on npm: the v0.4 admission and dependency surface as released.
-  Everything a consumer can install and run today is this snapshot.
-- **This repository's source — `0.4.0-dev.0` (unreleased).** A breaking development revision
-  *ahead of* the published snapshot: required admission coverage distinguishes passed/failed
-  relations from repair-dependent deferral, participating-unit passes can expose
-  current-request or prior-final satisfaction on both response paths, a pass states the
-  complete participant set its evidence must cover, and current-request evidence is
-  correlated with per-unit execution outcomes so an admitted pass is never read as proof the
-  satisfaction took effect. See the [decision](docs/request-reporting-design.md) and
-  [audit](docs/request-reporting-audit.md). Source behavior is **not** published behavior
-  until a future versioned release says so.
+- **Release-candidate channel:** [`@agorail-labs/mse-reference@next`](https://www.npmjs.com/package/@agorail-labs/mse-reference) tracks the most recently published RC. The package subdirectory prepares `1.0.0-rc.2` with clearer developer documentation; publication requires a separate protected workflow run.
+- **Experimental snapshot:** `@agorail-labs/mse-reference@0.4.0-experimental.1` is still available under `@experimental`, including for historical comparisons.
+- **Root development package:** its internal `0.4.0-dev.0` version is not the npm release version. Code in `src/` is packaged through the curated `package/` export surface; consult the [API reference](docs/API-REFERENCE.md) and [release qualification](docs/STABLE-RELEASE-READINESS.md) for the contract and limitations.
+
+Admission is not authorization; neither version provides live provider execution or exactly-once guarantees.
 
 ## Get the package
 
-Published experimentally on npm:
+Release candidates and experimental snapshots on npm:
 [**`@agorail-labs/mse-reference`**](https://www.npmjs.com/package/@agorail-labs/mse-reference)
 
 ```bash
-npm install @agorail-labs/mse-reference@0.4.0-experimental.1
+npm install @agorail-labs/mse-reference@next
 ```
 
-Node 20 or 22, ESM. The package is an experimental reference implementation — not a
-production system.
+Node.js 22+, ESM. The package remains a reference implementation, not a production-certified system.
 
 ## Minimal runnable example
 
@@ -92,12 +83,12 @@ The published package refusing an incomplete change and admitting the complete o
 git clone https://github.com/agorail-labs/mutation-safety-envelope.git
 mkdir mse-quickstart && cd mse-quickstart
 npm init -y
-npm install --save-exact @agorail-labs/mse-reference@0.4.0-experimental.1
+npm install --save-exact @agorail-labs/mse-reference@next
 cp ../mutation-safety-envelope/examples/consumer/multi-unit-admission.mjs .
 node multi-unit-admission.mjs
 ```
 
-Expected output (verified against the published package on Node 20.19.5 and 22.14.0):
+Expected simulator output (validate against the exact RC installed in your project):
 
 ```text
 Complete change (seats + add-on): ADMISSION_PASSED
@@ -224,8 +215,8 @@ different domains instantiate the same core without adding to it.
 
 ## Working from this source tree
 
-The commands below build and test the **unreleased `0.4.0-dev.0` source** described above —
-not the published package. For the published package, see
+The commands below build and test the repository's internal development source,
+not the installed npm release-candidate artifact. For the published package, see
 [Get the package](#get-the-package) and the
 [developer onboarding guide](docs/ONBOARDING.md).
 
@@ -239,8 +230,8 @@ npm run validate-schema  # compiles the JSON Schema standalone under ajv strict 
 
 ## Before you rely on this
 
-This is a v0.4.0-dev.0 development revision, not a finished or
-production-hardened specification. Start with:
+This is an experimental research implementation, not a production-certified
+provider integration or independently adopted standard. Start with:
 
 1. [`/docs/DISCLAIMER.md`](docs/DISCLAIMER.md) — what MSE is not.
 2. [`/docs/v0.3-review-response.md`](docs/v0.3-review-response.md) — what
