@@ -11,7 +11,7 @@
   },
   "homepage": "https://github.com/agorail-labs/mutation-safety-envelope",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "keywords": [
     "agentic-commerce",
