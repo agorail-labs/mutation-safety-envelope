@@ -36,6 +36,10 @@ example namespace**, not a registered or hosted Agorail capability. Its version 
 lightweight profile arrays are local test metadata, not production UCP discovery.
 All operation methods and wire examples here are experimental.
 
+The `.case.mjs` filenames are intentionally owned by this package's Node test
+runner. They are not Vitest suites. A dedicated cancellation workflow installs
+this package and runs it on Node 22/24/26; existing root tests run separately.
+
 The root package, npm publication, existing `ucp-binding/README.md`, and upstream
 UCP files remain outside this experiment. The older generic MSE binding sketch is
 not the architecture recommended by this cancellation investigation.

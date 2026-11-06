@@ -1,13 +1,13 @@
 # Draft follow-up for existing #348 — NOT POSTED
 
 The cancellation-first contract is already tracked in #943 and its focused
-specification/transport PR #945. I have added an isolated executable companion
+specification/transport PR #945. I have added an [isolated executable companion](https://github.com/agorail-labs/mutation-safety-envelope/pull/25)
 to exercise the behavior, rather than opening a competing proposal.
 
 The prototype covers whole-order and declared-unit cancellation, immediate and
 merchant-reviewed processing, atomic/per-unit commitment, stale versions,
 raw-byte idempotency conflicts, lost-response lookup, process restart and
-uncertain refunds. It uses local simulators only. Cafe24's merchant-review input
+uncertain refunds. Its 48 tests pass. It uses local simulators only. Cafe24's merchant-review input
 and Weston's declared-unit requirement inform the scenarios; neither has tested
 or endorsed this implementation.
 
@@ -30,7 +30,6 @@ back to the existing #943/#945 contract and its companion tests.
 
 ---
 
-Before posting, replace this note with the author-controlled Draft PR link and
-its pinned result count. No upstream issue, comment, reviewer request, or PR was
+No upstream issue, comment, reviewer request, or PR was
 created by this package. The link is supporting evidence, not a request to adopt
 MSE/SCQ or merge an unapproved extension.

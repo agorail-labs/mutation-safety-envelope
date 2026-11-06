@@ -5,7 +5,7 @@
   "type": "module",
   "engines": { "node": ">=22" },
   "scripts": {
-    "test": "node --test test/*.test.mjs",
+    "test": "node --test test/*.case.mjs",
     "demo": "node demo.mjs"
   },
   "dependencies": { "@agorail-labs/mse-reference": "1.0.0-rc.2" },

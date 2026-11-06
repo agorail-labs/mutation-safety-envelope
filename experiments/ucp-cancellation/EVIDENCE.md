@@ -79,6 +79,18 @@ Development logs are preserved rather than silently replacing failed runs:
   unit. Persisted dispatched indices now exclude it from approval execution.
   The corrected suite passes **48/48**, including that exact reproducer.
 
+The first Draft PR CI run also exposed test-runner interference: the root
+Vitest discovery loaded nested Node test files before their isolated package
+dependencies were installed. The experiment now uses explicit `.case.mjs` names
+and has a dedicated Node 22/24/26 workflow. No assertions or root test rules were
+disabled. Root tests/build/schema and the experiment are verified separately.
+
+After that correction, the existing root suite also executed locally:
+**325 tests passed, 0 failed**; `npm run build` and `npm run validate-schema`
+both exited 0. Exact commands and outputs are in `evidence/root-verification.json`
+and the associated `root-*.txt` logs. These 325 are existing package tests and are
+separate from the 48 new cancellation tests.
+
 No result above is a new count for fork #5. Its historical 313 checks and 24
 structural vectors were inspected, not rerun or relabeled here. `ucp-schema` was
 not available, so this work does not claim UCP annotation-resolution, docs build,
@@ -108,6 +120,7 @@ hash. It is not a generated or published full UCP schema.
 - Cafe24/Weston feedback is about upstream design, not this prototype. No external
   implementer or maintainer reviewed this technical package during this run.
 
-All changes live under this experiment on a separate branch. No npm release,
+Implementation and deliverables live under this experiment on a separate branch;
+one dedicated workflow under `.github/workflows/` runs its isolated tests. No npm release,
 real payment/billing mutation, upstream post, reviewer request, or merge is part
 of the work. The only authorized publication is an author-controlled Draft PR.
