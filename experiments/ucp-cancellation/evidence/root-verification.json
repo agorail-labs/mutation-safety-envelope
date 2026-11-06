@@ -1,0 +1,39 @@
+[
+  {
+    "command": [
+      "npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "exit_code": 0,
+    "output": "evidence/root-install.txt"
+  },
+  {
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "output": "evidence/root-tests.txt"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exit_code": 0,
+    "output": "evidence/root-build.txt"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "validate-schema"
+    ],
+    "exit_code": 0,
+    "output": "evidence/root-schema.txt"
+  }
+]

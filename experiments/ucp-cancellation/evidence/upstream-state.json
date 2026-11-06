@@ -1,0 +1,159 @@
+{
+  "audited_at": "2026-11-06",
+  "items": [
+    {
+      "key": "348",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/issues/348",
+      "title": "Orders lack modification support after placement",
+      "state": "open",
+      "merged": false,
+      "draft": null,
+      "updated_at": "2026-10-13T06:01:40Z"
+    },
+    {
+      "key": "issue845",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/issues/845",
+      "title": "[Proposal]: Accepted commercial term handoff into UCP Cart/Checkout",
+      "state": "open",
+      "merged": false,
+      "draft": null,
+      "updated_at": "2026-11-01T15:47:39Z"
+    },
+    {
+      "key": "issue929",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/issues/929",
+      "title": "[Proposal]: Quote extension — Business-authoritative quotation binding on Cart and Checkout",
+      "state": "open",
+      "merged": false,
+      "draft": null,
+      "updated_at": "2026-11-01T07:28:11Z"
+    },
+    {
+      "key": "issue947",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/issues/947",
+      "title": "[DTC Charter]: B2B Procurement",
+      "state": "open",
+      "merged": false,
+      "draft": null,
+      "updated_at": "2026-11-06T17:32:55Z"
+    },
+    {
+      "key": "issue943",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/issues/943",
+      "title": "[Proposal]: Order Cancellation Extension — Safe Post-Purchase Modifications and Reconciliation",
+      "state": "open",
+      "merged": false,
+      "draft": null,
+      "updated_at": "2026-10-13T20:32:59Z"
+    },
+    {
+      "key": "issue944",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/issues/944",
+      "title": "[Proposal]: Business-Initiated Post-Order Consultation — Revision-Bound Buyer Authorization and Decision Reconciliation",
+      "state": "open",
+      "merged": false,
+      "draft": null,
+      "updated_at": "2026-10-13T20:33:20Z"
+    },
+    {
+      "key": "pr890",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/pull/890",
+      "title": "feat: add purchase options extension and subscription policy",
+      "state": "open",
+      "merged": false,
+      "draft": false,
+      "base_sha": "cad9425f5e0a1bc38f2d84edf38f54fb0cac3f80",
+      "head_sha": "e6ecae9a75f209b5446bc698d1b566b15dc04560",
+      "updated_at": "2026-11-06T17:32:35Z"
+    },
+    {
+      "key": "pr1029",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/pull/1029",
+      "title": "docs(shopping): propose accepted-term handoff boundary for EP #845",
+      "state": "open",
+      "merged": false,
+      "draft": false,
+      "base_sha": "58c7ab92dcf80b3b1fc756d577b0552ec1cd503a",
+      "head_sha": "a38be0e7123aa8a21c9c52a2f9a79ca810a0056c",
+      "updated_at": "2026-11-05T00:23:46Z"
+    },
+    {
+      "key": "pr930",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/pull/930",
+      "title": "feat(common): add quote extension (Working Draft reference for #929)",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base_sha": "ba9795a6a1c55dc98ec50032cc124a77fba16750",
+      "head_sha": "390ea57ca8e506bccf6ad5510ece497cc79fddff",
+      "updated_at": "2026-10-24T01:53:42Z"
+    },
+    {
+      "key": "pr945",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/pull/945",
+      "title": "feat: propose cancellation-first order modification extension (EP #943)",
+      "state": "open",
+      "merged": false,
+      "draft": false,
+      "base_sha": "69895b84b451925a92ac0c9122353eab310e1a23",
+      "head_sha": "1f6d526a1918bc072b49344ca8bbbddd948d7762",
+      "updated_at": "2026-10-27T13:47:50Z"
+    },
+    {
+      "key": "pr946",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/pull/946",
+      "title": "feat: propose business-initiated post-order consultation extension (EP #944)",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base_sha": "69895b84b451925a92ac0c9122353eab310e1a23",
+      "head_sha": "ed1e928e541a11d4fb83ffa984a1c32047211c8d",
+      "updated_at": "2026-10-27T01:59:01Z"
+    },
+    {
+      "key": "pr5",
+      "url": "https://github.com/arjun2075/ucp/pull/5",
+      "title": "test(order): conformance companion for UCP EP #943 (stacked draft)",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base_sha": "1f6d526a1918bc072b49344ca8bbbddd948d7762",
+      "head_sha": "023de18367afe2bacacfca74af62d60393018761",
+      "updated_at": "2026-10-27T13:40:02Z"
+    },
+    {
+      "key": "pr848",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/pull/848",
+      "title": "feat: add order access credentials for guest post-purchase access",
+      "state": "open",
+      "merged": false,
+      "draft": false,
+      "base_sha": "ba9795a6a1c55dc98ec50032cc124a77fba16750",
+      "head_sha": "55a5d96d2c3bdc242580f257fa4bde28ca3799b9",
+      "updated_at": "2026-10-25T01:39:13Z"
+    },
+    {
+      "key": "pr843",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/pull/843",
+      "title": "feat: define standard adjustment types with open extensibility",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base_sha": "d3ccb55c43d0d801f4f8616e877599e2bd12c6ae",
+      "head_sha": "b1df7f1adebf32645ef8d3ff9dfe195a1609d17b",
+      "updated_at": "2026-10-16T03:09:52Z"
+    }
+  ],
+  "feedback": [
+    {
+      "author": "westonale",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/issues/348#issuecomment-5572815428",
+      "body": "One thing gets decided before a modification is ever requested, and neither the issue's suggested direction nor the execution-safety list above accounts for it: whether the order has independently reversible units at all.\n\nIn what we run, that is settled at checkout, not at modification time. A cart splits into one escrow unit per goods line plus one retained delivery unit, and the split is only advertised when the per-unit amounts reconstruct the authoritative cart total exactly. The reconciliation is a hard equality on integer minor units: goods subtotals plus cart tax plus delivery must equal the total, or the split returns nothing and the order captures as a single pooled unit. Cart tax is allocated across the goods lines proportionally, with the remainder on the last line, so no cent is created or lost in the split.\n\nThe consequence is the part I think belongs in the contract. Any cart-level amount that cannot be attributed to a line, a cart-level discount, a duty, a surcharge the priced reservation does not decompose, collapses the whole order to pooled. A pooled order cannot cancel one line. Not by policy, structurally: there is no separately settled unit to reverse.\n\nSo `modify_order` and a `modifications` array that assume line granularity will produce requests some businesses cannot execute even when they would like to. The only available response is reject, and on the wire that is indistinguishable from a policy refusal. An agent reading it as policy retries, or downgrades the merchant, when the real answer is that the order was captured as one unit and always was.\n\nThe cheap fix sits on the read side rather than the write side: the order should declare its reversible units before a modification is proposed. We surface ours on the order read as an array with one entry per independently settled unit, each carrying its own index, its own amount and its own current state, and the array is absent entirely when the order captured as a single unit. A caller therefore learns the granularity by reading, without a speculative write.\n\nThat composes with the four invariants above rather than competing with them. An atomicity boundary and per-unit results only mean something once the units are named, and naming them at read time makes the atomicity question answerable before the request instead of discoverable from its failure.\n\nTwo smaller requirements from the same experience, both cheap if they go in early and expensive later:\n\nA modification result should carry the amount for the unit it affected rather than inheriting the order's. A partial reversal whose record has no unit amount to point at will report the order total, and every downstream consumer of that record, receipt, ledger, accounting export, then carries a number that is correct for the order and wrong for the modification.\n\nReversal granularity should be stated as a property of the order, not derived by the caller from the line array. The number of lines the customer sees and the number of units that can settle independently are not the same number, and in our case they routinely differ by one, because delivery is retained as its own unit so a goods line can be cancelled while delivery and its siblings continue.\n\nNot answering the direction question, that is the maintainers' call. But if the modification contract is written here, this is the requirement I would want in it that is not yet on the list.\n"
+    },
+    {
+      "author": "cafe24-sbmoon",
+      "url": "https://github.com/Universal-Commerce-Protocol/ucp/issues/348#issuecomment-6121415220",
+      "body": "Adding an implementer's perspective from Cafe24, a commerce platform that hosts online stores for merchants in Korea. Our merchants already handle cancellations, returns, and exchanges in their own back office. What's missing is a way for an agent to reach that flow. The spec defines `dev.ucp.shopping.order:manage` for \"cancellation, returns, and other modifications\" ([order spec](https://github.com/Universal-Commerce-Protocol/ucp/blob/v2026-08-25/docs/specification/shopping/order/index.md#L547)), but no operation consumes that scope, so platforms fall back to `permalink_url` ([REST binding](https://github.com/Universal-Commerce-Protocol/ucp/blob/v2026-08-25/docs/specification/shopping/order/rest.md#L259-L261)).\n\nWe support the contract @arjun2075 outlined above, along with @westonale's point that granularity should be declared on read. Here are our answers to the three open questions:\n\n**1. Is post-placement modification still intended for Orders?** We think so. The `order:manage` scope already promises it, and a buyer who completed checkout inside an agent surface currently has to leave that surface to cancel.\n\n**2. Should this begin as an optional Orders extension?** Yes, and we'd suggest making the first slice `cancel` only, for the whole order and per line. It is the first operation `order:manage` names and it exercises §1–§6 end to end. Quantity change and swap can follow under the same contract, which also keeps the core small.\n\n**3. Does the separation between modification units and resulting adjustments match the intended model?** Yes. Our Order read already reports cancellations, returns, and exchanges as `adjustments[]` built from the merchant's records, and a cancellation's refund settles there after the cancellation itself, as §6 describes. The one case that doesn't fit yet is below.\n\n**One gap: waiting on the merchant.** The issue describes modifications as requests the business accepts or rejects. On our platform the same buyer action ends differently depending on order state, store settings, and payment method:\n\n- Before payment, the buyer's cancellation completes immediately.\n- After payment and before shipment, it becomes a request that the merchant accepts or rejects. Some stores instead let certain payment methods cancel and refund right away.\n- After shipment, cancellation is no longer offered and the buyer requests a return instead.\n\nThe request in the middle has no outcome in §4. The business has received it but hasn't decided whether to accept it, so in #846's terms admission itself is deferred to the merchant. It is neither `committed` nor `refused`, and `indeterminate` doesn't fit either: nothing is unknown, only undecided, and the request can still end as `refused`, which `indeterminate` never resolves to. Without such an outcome, our Order read has to surface the request as a `pending` cancellation adjustment, which an agent can't tell apart from \"cancellation committed, refund pending\", the state §6 tells agents to report. We think the contract needs a distinct outcome for \"requested, awaiting business decision\". The issue's `order.modification_requested` event could announce it, and `get_modification` or the order webhook would resolve it later. #410 already uses `merchant_review` as an eligibility value for returns.\n\n**What an agent needs to read before asking.** Building on the §1–§2 declaration:\n\n- Per-unit `operations` already say what is allowed right now. For our merchants that set changes at shipment rather than at a fixed time, as the version-precondition example in §2 anticipates, and after that the same request becomes a return.\n- Whether a request will complete immediately or wait for the merchant, so the agent can set the buyer's expectations before submitting it.\n- An estimated refund next to `reversible_amount`. For us the two differ, because a partial cancellation re-allocates discounts and shipping fees, and the refund can be split across the original payment, loyalty points, and store credit. This is also why, for us, an order-level discount on its own doesn't make an order order-only; §3 already leaves that declaration to the business.\n- The `reason` and `reason_code` pair from the order-only declaration on each unit as well, so a policy refusal is explained on read and §3's split between structural unavailability and policy refusal holds per unit.\n\nThe read side could be prototyped as a vendor extension, but cancellation itself needs a new operation, so we'd rather converge on the contract here first. We can check the contract against our merchants' cancellation flows and contribute the merchant-review outcome and the read-side additions above. It would also help to hear from the maintainers whether post-placement modification, starting with `cancel`, is still the intended direction for Orders, since that answer is what's holding up turning this outline into an EP.\n\nRelated: #846 (admission vs. realization), #35, #410, #544."
+    }
+  ]
+}

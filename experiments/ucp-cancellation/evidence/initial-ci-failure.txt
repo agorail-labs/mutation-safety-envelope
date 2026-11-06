@@ -1,0 +1,62 @@
+Run npm test
+2026-11-06T17:57:10.9205622Z [36;1mnpm test[0m
+2026-11-06T17:57:10.9257712Z shell: /usr/bin/bash -e {0}
+2026-11-06T17:57:10.9258081Z ##[endgroup]
+2026-11-06T17:57:11.0387416Z 
+2026-11-06T17:57:11.0388032Z > mutation-safety-envelope@0.4.0-dev.0 test
+2026-11-06T17:57:11.0388716Z > vitest run
+2026-11-06T17:57:11.0388963Z 
+2026-11-06T17:57:11.4653386Z 
+2026-11-06T17:57:11.4658954Z [1m[30m[46m RUN [49m[39m[22m [36mv5.1.0 [39m[90m/home/runner/work/mutation-safety-envelope/mutation-safety-envelope[39m
+2026-11-06T17:57:11.4659912Z 
+2026-11-06T17:57:11.9131129Z  [31m❯[39m experiments/ucp-cancellation/test/cancellation.test.mjs [2m([22m[2m0 test[22m[2m)[22m
+2026-11-06T17:57:11.9285860Z  [32m✓[39m test/core.test.ts [2m([22m[2m78 tests[22m[2m)[22m[32m 43[2mms[22m[39m
+2026-11-06T17:57:12.0399989Z  [32m✓[39m test/admission.test.ts [2m([22m[2m140 tests[22m[2m)[22m[32m 116[2mms[22m[39m
+2026-11-06T17:57:12.2615723Z  [32m✓[39m test/adversarial-stable-core.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+2026-11-06T17:57:12.3576766Z  [32m✓[39m test/schema-conformance.test.ts [2m([22m[2m53 tests[22m[2m)[22m[32m 29[2mms[22m[39m
+2026-11-06T17:57:12.4543838Z  [32m✓[39m test/request-reporting.test.ts [2m([22m[2m36 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+2026-11-06T17:57:12.4672349Z  [32m✓[39m test/admission-only.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+2026-11-06T17:57:12.5691636Z  [31m❯[39m experiments/ucp-cancellation/test/schema.test.mjs [2m([22m[2m0 test[22m[2m)[22m
+2026-11-06T17:57:12.6280889Z  [32m✓[39m test/api-surface.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 37[2mms[22m[39m
+2026-11-06T17:57:12.6347704Z 
+2026-11-06T17:57:12.6348579Z [31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Suites 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+2026-11-06T17:57:12.6349003Z 
+2026-11-06T17:57:12.6358091Z [41m[1m FAIL [22m[49m experiments/ucp-cancellation/test/cancellation.test.mjs[2m [ experiments/ucp-cancellation/test/cancellation.test.mjs ][22m
+2026-11-06T17:57:12.6360695Z [41m[1m FAIL [22m[49m experiments/ucp-cancellation/test/schema.test.mjs[2m [ experiments/ucp-cancellation/test/schema.test.mjs ][22m
+2026-11-06T17:57:12.6364072Z [31m[1mError[22m: Cannot find package '@agorail-labs/mse-reference' imported from /home/runner/work/mutation-safety-envelope/mutation-safety-envelope/experiments/ucp-cancellation/src/admission.mjs[39m
+2026-11-06T17:57:12.6366716Z [36m [2m❯[22m experiments/ucp-cancellation/src/admission.mjs:[2m1:1[22m[39m
+2026-11-06T17:57:12.6398879Z     [90m  1|[39m [35mimport[39m { evaluateAdmissionOnly } [35mfrom[39m [32m'@agorail-labs/mse-reference'[39m[33m;[39m
+2026-11-06T17:57:12.6399912Z     [90m   |[39m [31m^[39m
+2026-11-06T17:57:12.6400462Z     [90m  2|[39m
+2026-11-06T17:57:12.6401302Z     [90m  3|[39m // Binding-local dependency interpretation. No MSE wire payload is req…
+2026-11-06T17:57:12.6402165Z [90m [2m❯[22m experiments/ucp-cancellation/src/simulator.mjs:[2m4:1[22m[39m
+2026-11-06T17:57:12.6402549Z 
+2026-11-06T17:57:12.6402819Z [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯[22m[39m
+2026-11-06T17:57:12.6403052Z 
+2026-11-06T17:57:12.6405022Z 
+2026-11-06T17:57:12.6411848Z [2m Test Files [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m7 passed[39m[22m[90m (9)[39m
+2026-11-06T17:57:12.6414228Z [2m      Tests [22m [1m[32m325 passed[39m[22m[90m (325)[39m
+2026-11-06T17:57:12.6415545Z [2m   Start at [22m 17:57:11
+2026-11-06T17:57:12.6421697Z [2m   Duration [22m 1.16s[2m (import 43%, transform 34%, tests 20%, worker 3%)[22m
+2026-11-06T17:57:12.6434023Z 
+2026-11-06T17:57:12.6435067Z [2m    Isolate [22m [33m9 workers spawned[39m[2m · ~136ms startup each (spawn + environment, per file)[22m
+2026-11-06T17:57:12.6436933Z [2m            [22m [2mat least ~272ms faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+2026-11-06T17:57:12.6438045Z 
+2026-11-06T17:57:12.6460904Z 
+2026-11-06T17:57:12.6487048Z ##[error]Error: Cannot find package '@agorail-labs/mse-reference' imported from /home/runner/work/mutation-safety-envelope/mutation-safety-envelope/experiments/ucp-cancellation/src/admission.mjs
+ ❯ experiments/ucp-cancellation/src/admission.mjs:1:1
+ ❯ experiments/ucp-cancellation/src/simulator.mjs:4:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'ERR_MODULE_NOT_FOUND' }
+
+2026-11-06T17:57:12.6495562Z 
+2026-11-06T17:57:12.6498909Z ##[error]Error: Cannot find package '@agorail-labs/mse-reference' imported from /home/runner/work/mutation-safety-envelope/mutation-safety-envelope/experiments/ucp-cancellation/src/admission.mjs
+ ❯ experiments/ucp-cancellation/src/admission.mjs:1:1
+ ❯ experiments/ucp-cancellation/src/simulator.mjs:4:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'ERR_MODULE_NOT_FOUND' }
+
+2026-11-06T17:57:12.6762852Z ##[error]Process completed with exit code 1.
+2026-11-06T17:57:12.6926850Z 
