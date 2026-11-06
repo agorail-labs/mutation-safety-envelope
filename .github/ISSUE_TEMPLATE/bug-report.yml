@@ -1,0 +1,39 @@
+name: Bug or conformance discrepancy
+description: Report a reproducible defect, spec inconsistency, or test gap in MSE.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        MSE is an experimental research project. Do not include credentials, customer details, or live billing account data.
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface under test
+      options:
+        - Published npm package @agorail-labs/mse-reference@0.4.0-experimental.1
+        - Repository source (0.4.0-dev.0, unreleased)
+        - Specification / documentation
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: What does the implementation or document actually do or say? Include a small synthetic reproduction or a precise section reference.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should happen instead, and which claim, rule, or document supports that expectation?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Node version, package version or source commit, and operating system.
+    validations:
+      required: true

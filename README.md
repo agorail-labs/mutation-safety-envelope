@@ -1,31 +1,21 @@
 # Mutation Safety Envelope (MSE)
 
-**Status:** Experimental / External Review Candidate — v0.4.0-dev.0 (unreleased)
+**Status:** Experimental / External Review Candidate
 **License:** Apache-2.0
 
-> **v0.4.0-dev.0 is a breaking development revision of v0.3.0.** Required
-> admission coverage distinguishes passed/failed relations from repair-dependent
-> deferral, and participating-unit passes can expose current-request or
-> prior-final satisfaction on both response paths. A pass states the complete
-> participant set its evidence must cover, and current-request evidence is
-> correlated with per-unit execution outcomes so an admitted pass is never read
-> as proof the satisfaction took effect. The recorded v0.3.0 reproduction needs three refusal/repair cycles;
-> independent aggregation reports all three failures together. See the
-> [decision](docs/request-reporting-design.md) and [audit](docs/request-reporting-audit.md).
-> This is proposed MSE design work, not UCP adoption or endorsement.
+**Part of [Agorail](https://github.com/agorail-labs) — safety contracts for AI-driven commerce changes.**
 
-> MSE is **not** an official specification of UCP, ACP, Shopify, Salesforce,
-> IATA, Paid, Stripe, Paddle, Zuora, Chargebee, or any other vendor or
-> standards body. It is an independent research proposal. See
-> [`/docs/DISCLAIMER.md`](docs/DISCLAIMER.md).
+An AI agent is asked to increase a SaaS subscription from 100 to 120 seats. The change is
+only safe as a *set*: the seat increase requires a dependent entitlement to be added in the
+same change, and across a multi-unit change one unit may apply, another refuse, and a third
+end in an unknown state. A single `SUCCESS` flag cannot express any of that — and dispatching
+an incomplete set can succeed unit-by-unit while violating the change's own dependencies.
 
-## What this is
-
-Mutation Safety Envelope (MSE) is a domain-blind safety contract that lets
-an autonomous agent preview the consequences of changing existing
-commercial state, evaluate those consequences against bounded constraints,
-commit the change, and distinguish committed state from unfinished
-downstream effects.
+Mutation Safety Envelope (MSE) is a domain-blind safety contract that evaluates whether a
+proposed collection of changes is **admissible — including its required dependencies —
+before dispatch**, and gives the caller evidence-bearing answers instead of a flag:
+`ADMISSION_PASSED` with per-relation coverage and satisfaction evidence, or
+`ADMISSION_REFUSED` with witnesses that name exactly what is missing.
 
 Commerce systems increasingly let agents modify existing commercial state —
 edit an order, change an itinerary, modify a subscription, amend a billing
@@ -34,6 +24,117 @@ API call does not, by itself, tell an autonomous agent what was predicted,
 what was guaranteed, whether the mutation definitely happened, or whether
 downstream effects like refunds are final. MSE standardizes that safety
 boundary without standardizing the underlying commerce domain.
+
+## What MSE does and does not do
+
+**Does**
+
+- Evaluates a proposed multi-unit change **read-only, before dispatch**: admission relations
+  (for example, required co-inclusion of a dependent unit) are checked as a set, and a refusal
+  carries a repair witness naming the missing transitions.
+- Previews consequences per unit — scoped identity, opaque transition, predicted effects with
+  per-effect guarantees (`EXACT | REVALIDATE | UNKNOWN`) — and, at commit, reports one result
+  **per unit** (`APPLIED | REFUSED | INDETERMINATE`) with per-effect finality, instead of one
+  success flag for the whole mutation.
+
+**Does not**
+
+- **Grant authorization.** Admission is not permission: whether a change may happen at all
+  remains the caller's decision, outside MSE.
+- Define identity, authentication, delegation, payment authorization, transport, generic
+  idempotency, resource schemas, inventory reservation, refunds, fulfillment, payment
+  settlement, or procurement — see [What MSE does not define](#what-mse-does-not-define).
+- Provide exactly-once provider execution, atomic cross-unit or cross-provider updates, or
+  production-certified safety. An admitted pass is admission-time evidence, never proof that
+  a satisfaction took effect.
+
+> MSE is **not** an official specification of UCP, ACP, Shopify, Salesforce,
+> IATA, Paid, Stripe, Paddle, Zuora, Chargebee, or any other vendor or
+> standards body. It is an independent research proposal. See
+> [`/docs/DISCLAIMER.md`](docs/DISCLAIMER.md).
+
+## Two artifacts — published package vs. this source tree
+
+These are **different artifacts**; do not assume behavior in one implies behavior in the
+other.
+
+- **Published npm package — `@agorail-labs/mse-reference@0.4.0-experimental.1`.** The frozen
+  experimental snapshot on npm: the v0.4 admission and dependency surface as released.
+  Everything a consumer can install and run today is this snapshot.
+- **This repository's source — `0.4.0-dev.0` (unreleased).** A breaking development revision
+  *ahead of* the published snapshot: required admission coverage distinguishes passed/failed
+  relations from repair-dependent deferral, participating-unit passes can expose
+  current-request or prior-final satisfaction on both response paths, a pass states the
+  complete participant set its evidence must cover, and current-request evidence is
+  correlated with per-unit execution outcomes so an admitted pass is never read as proof the
+  satisfaction took effect. See the [decision](docs/request-reporting-design.md) and
+  [audit](docs/request-reporting-audit.md). Source behavior is **not** published behavior
+  until a future versioned release says so.
+
+## Get the package
+
+Published experimentally on npm:
+[**`@agorail-labs/mse-reference`**](https://www.npmjs.com/package/@agorail-labs/mse-reference)
+
+```bash
+npm install @agorail-labs/mse-reference@0.4.0-experimental.1
+```
+
+Node 20 or 22, ESM. The package is an experimental reference implementation — not a
+production system.
+
+## Minimal runnable example
+
+The published package refusing an incomplete change and admitting the complete one
+([`examples/consumer/multi-unit-admission.mjs`](examples/consumer/multi-unit-admission.mjs)):
+
+```bash
+git clone https://github.com/agorail-labs/mutation-safety-envelope.git
+mkdir mse-quickstart && cd mse-quickstart
+npm init -y
+npm install --save-exact @agorail-labs/mse-reference@0.4.0-experimental.1
+cp ../mutation-safety-envelope/examples/consumer/multi-unit-admission.mjs .
+node multi-unit-admission.mjs
+```
+
+Expected output (verified against the published package on Node 20.19.5 and 22.14.0):
+
+```text
+Complete change (seats + add-on): ADMISSION_PASSED
+  coverage: rel-seats-require-addon:PASSED
+  failures: 0
+Incomplete change (seats only): ADMISSION_REFUSED
+  failed relation: rel-seats-require-addon
+  witness disposition: COMPLETE
+  missing unit named by the witness: addon-analytics
+Done: admission passed the complete change and refused the incomplete one before dispatch.
+```
+
+To see MSE composed with SCQ's financial lifecycle — quote, separate approval policy,
+commit, durable replay — run
+[**Try Agorail in Five Minutes**](https://github.com/agorail-labs/subscription-change-quote/blob/main/docs/TRY-AGORAIL-IN-FIVE-MINUTES.md)
+in the SCQ repository.
+
+## How MSE and SCQ complement each other
+
+MSE answers the pre-dispatch question: *is this set of changes admissible as a whole?*
+[**SCQ (Subscription Change Quote)**](https://github.com/agorail-labs/subscription-change-quote)
+answers the financial question for subscriptions: *what will this change cost, how strongly
+is that guaranteed, and did the committed outcome stay within what was approved?* The two
+published packages compose in user code; neither package's API depends on the other, and
+each can be adopted independently. SCQ on npm:
+[`@agorail-labs/scq-reference`](https://www.npmjs.com/package/@agorail-labs/scq-reference).
+
+## Documentation
+
+- [Developer onboarding](docs/ONBOARDING.md) — package install, the runnable admission
+  example, and how MSE composes with SCQ.
+- [Normative specification](spec/normative-spec.md) — the contract itself.
+- [Before you rely on this](#before-you-rely-on-this) — disclaimer, audits, ambiguities, and
+  falsification notes.
+- [Independent review package](https://github.com/agorail-labs/subscription-change-quote/blob/main/docs/INDEPENDENT-MSE-SCQ-REVIEW.md)
+  — reproduce, falsify, and report findings across both projects.
+- [Contributing](CONTRIBUTING.md)
 
 ## The core claim, in one diagram
 
@@ -121,12 +222,12 @@ vocabulary. The core schema contains no SKUs, fares, plans, billing
 periods, seat counts, or refund rules — see `/examples` for how four
 different domains instantiate the same core without adding to it.
 
-## Getting started
+## Working from this source tree
 
-Using the published experimental package instead of this repository's
-sources? See the [developer onboarding guide](docs/ONBOARDING.md) —
-`npm install @agorail-labs/mse-reference@experimental`, a runnable
-admission example, and how MSE composes with SCQ.
+The commands below build and test the **unreleased `0.4.0-dev.0` source** described above —
+not the published package. For the published package, see
+[Get the package](#get-the-package) and the
+[developer onboarding guide](docs/ONBOARDING.md).
 
 ```bash
 npm install

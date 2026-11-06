@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Independent review package (MSE + SCQ)
+    url: https://github.com/agorail-labs/subscription-change-quote/blob/main/docs/INDEPENDENT-MSE-SCQ-REVIEW.md
+    about: How to run the published packages adversarially and report falsifiable findings.
+  - name: Security policy
+    url: https://github.com/agorail-labs/.github/blob/main/SECURITY.md
+    about: Report security-sensitive concerns privately instead of opening a public issue.
