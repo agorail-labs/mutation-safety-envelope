@@ -1,0 +1,84 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> agorail-ucp-cancellation-experiment@0.0.0-experimental test
+> node --test test/*.test.mjs
+
+✔ N01 unsupported capability has no declarations and mutation fails closed (5.871327ms)
+✔ N02 base Order and manage scope alone do not negotiate cancellation (1.341549ms)
+✔ N03 stale version wins over unknown target; no attempt or effect (2.693864ms)
+✔ N04 unknown target differs from structural unavailability and policy refusal (7.039656ms)
+✔ N05 pooled declaration is explicit order-only; no inference from lines (6.016866ms)
+✔ P01 cancel one unit preserves sibling and retained delivery, amount is unit amount (6.244243ms)
+✔ P02 whole-order is one atomic target, includes retained delivery without inventing a line (4.398099ms)
+✔ N06 duplicate attempt replays initial bytes-equivalent response without dispatch (2.878207ms)
+✔ N07 raw JSON reordering under same key conflicts even when parsed JSON is equal (2.427514ms)
+✔ N08 two concurrent same-version requests serialize; exactly one dispatch (2.703779ms)
+✔ N09 per-unit partial commitment evaluates an independent policy refusal (3.012214ms)
+✔ N10 atomic refusal blocks sibling, with dependency, and commits nothing (1.963606ms)
+✔ N11 pending merchant decision differs from indeterminate and refund-pending (3.057722ms)
+✔ N12 atomic review holds immediate sibling until all approval is decided (2.689929ms)
+✔ N13 expired approval cannot dispatch or mutate (2.075264ms)
+✔ N14 merchant refusal is terminal; late approval cannot revive it (1.805698ms)
+✔ N15 fulfillment during review revalidates eligibility; no blind approval commit (3.028438ms)
+✔ N16 overlapping pending attempts may be admitted; at most one commits (5.52151ms)
+✔ N17 lost response resolves by scoped lookup and current Order; no redispatch (2.596398ms)
+✔ N18 unknown lookup is read-only and never proves no execution (0.553273ms)
+✔ N19 crash after effect survives process restart and reconciles once (5.821833ms)
+✔ N20 crash before effect leaves uncertainty; missing provider record is no negative proof (3.711216ms)
+✔ N21 independent partial outcomes retain committed, refused, and unknown units (3.843614ms)
+✔ N22 known non-execution is failed; unknown execution stays indeterminate (3.429782ms)
+✔ N23 published MSE dependency refusal names missing unit before any dispatch (3.677215ms)
+✔ N24 published MSE admission pass grants no policy approval or execution (3.139335ms)
+✔ N25 revoked manage scope blocks replay despite admission having passed (2.601906ms)
+✔ N26 cross-platform lookup and get never expose another attempt (2.5383ms)
+✔ N27 uncertain refund does not become zero or reverse cancellation commitment (3.120046ms)
+✔ N28 estimated refund, affected amount, and split actual refund remain distinct (3.118094ms)
+✔ N29 wrong-currency, floating-point, and unsafe refund observations fail closed (2.724931ms)
+✔ N30 zero refund is explicitly determined only after final observation (3.060327ms)
+✔ N31 storage outage blocks claims, reads, and dispatch (0.838442ms)
+✔ N32 fence is explicit mutation; delayed original can never dispatch in the simulator (1.145253ms)
+✔ N33 expired record retains claim; neither replay nor fencing proves non-execution (3.178314ms)
+✔ N34 client blocks fresh overlapping attempt after loss and recovery performs reads only (2.709078ms)
+✔ N35 malformed, duplicate, mixed order/unit and injected authority fields are rejected (0.877401ms)
+✔ N36 unknown atomicity or target vocabulary never becomes a permissive multi-write (0.615847ms)
+✔ N37 every visible adjustment change invalidates the previous order version (3.042139ms)
+✔ N38 fence has a separate operation scope, replays, and rejects conflicting reuse (0.859464ms)
+✔ N39 whole-order merchant review is independent of per-unit processing modes (2.724551ms)
+✔ N40 atomic group cannot report partial commitment when one simulated backend fails (3.230403ms)
+✔ N41 hidden authoritative commit is indeterminate until its evidence is readable (2.338019ms)
+✔ N42 mutual negotiation requires a supported parent and extension version (0.54528ms)
+✖ N43 approving a pending sibling never redispatches an already indeterminate unit (4.749748ms)
+✔ S01 executable read declarations and requests match pinned PR945 fragment shapes (53.044124ms)
+✔ S02 mixed and pending records match pinned draft shapes; atomic partial success is rejected (4.799585ms)
+✔ S03 uncertain and final refunds preserve current UCP adjustment schema (10.686734ms)
+ℹ tests 48
+ℹ suites 0
+ℹ pass 47
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 282.727397
+
+✖ failing tests:
+
+test at test/cancellation.test.mjs:330:1
+✖ N43 approving a pending sibling never redispatches an already indeterminate unit (4.749748ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 2
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/e9a50624058a/audit/mse/experiments/ucp-cancellation/test/cancellation.test.mjs:335:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

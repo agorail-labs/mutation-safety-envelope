@@ -1,0 +1,14 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> agorail-ucp-cancellation-experiment@0.0.0-experimental demo
+> node demo.mjs
+
+EXPERIMENTAL local simulator; no UCP standard or merchant service is implemented.
+Negotiated declaration: {"granularity":"by_unit","atomicity":"per_unit","operations":["cancel"],"order_cancellation":{"available":true,"processing_mode":"merchant_review","reversible_amount":5500,"estimated_refund_amount":4900},"units":[{"id":"goods-a","operations":["cancel"],"processing_mode":"immediate","reversible_amount":3000,"targets":[{"type":"line_item","id":"line-a","quantity":2}],"estimated_refund_amount":2700},{"id":"goods-b","operations":["cancel"],"processing_mode":"merchant_review","reversible_amount":2000,"targets":[{"type":"line_item","id":"line-b","quantity":1}],"estimated_refund_amount":1800},{"id":"delivery","operations":[],"processing_mode":"immediate","reversible_amount":500,"targets":[{"type":"fulfillment_expectation","id":"fulfillment-a"}],"estimated_refund_amount":400,"reason_code":"structurally_unavailable","reason":"No independent cancellation is declared."}]}
+Submission response lost. Recover by read, with original key.
+Recovered exact attempt: {"modification_id":"382fbcb5-a64d-4288-be64-87c8e105361f","order_id":"order-a","base_order_version":"af547484-bfbc-477b-8735-dbacb88b2cc5","atomicity":"per_unit","status":"open","results":[{"op":"cancel","target":{"type":"unit","id":"goods-a"},"outcome":"committed","affected_amount":3000,"adjustments":["adjustment:382fbcb5-a64d-4288-be64-87c8e105361f:0"]},{"op":"cancel","target":{"type":"unit","id":"goods-b"},"outcome":"awaiting_business_decision"}],"created_at":"2026-11-06T18:00:00.000Z","updated_at":"2026-11-06T18:00:00.000Z","retained_until":"2026-12-06T18:00:00.000Z"}
+Dispatches after recovery: 1
+Merchant decision: {"modification_id":"382fbcb5-a64d-4288-be64-87c8e105361f","order_id":"order-a","base_order_version":"af547484-bfbc-477b-8735-dbacb88b2cc5","atomicity":"per_unit","status":"closed","results":[{"op":"cancel","target":{"type":"unit","id":"goods-a"},"outcome":"committed","affected_amount":3000,"adjustments":["adjustment:382fbcb5-a64d-4288-be64-87c8e105361f:0"]},{"op":"cancel","target":{"type":"unit","id":"goods-b"},"outcome":"committed","affected_amount":2000,"adjustments":["adjustment:382fbcb5-a64d-4288-be64-87c8e105361f:1"]}],"created_at":"2026-11-06T18:00:00.000Z","updated_at":"2026-11-06T18:00:00.000Z","retained_until":"2026-12-06T18:00:00.000Z"}
+Cancellation committed; refund: {"determinacy":"UNKNOWN","status":"pending"}
+Uncertain settlement: {"determinacy":"UNKNOWN","status":"unknown"}
+Simulated authoritative financial observation: {"determinacy":"DETERMINED","status":"completed","amount":2650,"currency":"USD","components":[{"method":"original_payment","amount":2400},{"method":"loyalty","amount":200},{"method":"store_credit","amount":50}]}

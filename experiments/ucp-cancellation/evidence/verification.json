@@ -1,0 +1,42 @@
+{
+  "node": "v24.22.1",
+  "npm": "11.9.0",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "commands": [
+    {
+      "command": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit_code": 0,
+      "output": "evidence/install-final.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "output": "evidence/tests-final.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "demo"
+      ],
+      "exit_code": 0,
+      "output": "evidence/demo.txt"
+    }
+  ],
+  "summary": {
+    "tests": 48,
+    "pass": 48,
+    "fail": 0,
+    "skip": 0
+  },
+  "verification": "Author-controlled local simulator and pinned schema fragments; no independent implementation."
+}
