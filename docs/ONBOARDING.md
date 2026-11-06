@@ -1,5 +1,10 @@
 # MSE developer onboarding
 
+> **New to Agorail?** Start with
+> [Try Agorail in Five Minutes](https://github.com/agorail-labs/subscription-change-quote/blob/main/docs/TRY-AGORAIL-IN-FIVE-MINUTES.md)
+> — the published MSE and SCQ packages composed in one clean consumer
+> project. This guide is the MSE-only deep dive.
+
 Mutation Safety Envelope (MSE) is a **domain-blind safety contract** for
 changing existing commercial state — an order, an itinerary, a subscription,
 a billing contract. Commerce systems increasingly let autonomous agents

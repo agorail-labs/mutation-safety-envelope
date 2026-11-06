@@ -18,6 +18,9 @@
     "commercial-mutation",
     "admission",
     "dependencies",
+    "ai-agent",
+    "mutation-safety",
+    "safety-envelope",
     "experimental"
   ],
   "exports": {

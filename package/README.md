@@ -6,7 +6,7 @@ Experimental MSE v0.4.0 admission and cross-unit dependency **reference implemen
 
 ## Installation
 
-After the experimental version appears on npm:
+Published experimentally on npm (Node 20 or 22, ESM):
 
 ```bash
 npm install @agorail-labs/mse-reference@0.4.0-experimental.1
@@ -28,7 +28,7 @@ The MSE schema is exported as `@agorail-labs/mse-reference/schema`.
 
 ## Composing with SCQ
 
-SCQ validates subscription financial commitments and uses its durable coordinator for at-most-once **dispatch authorization**; MSE supplies admission and dependency reports. The experimental composition lives in the SCQ repository [PR #57](https://github.com/agorail-labs/subscription-change-quote/pull/57) and its pinned cross-repository Node 20/22 CI. The demonstrated provider is simulated, not a certified live Chargebee integration.
+SCQ validates subscription financial commitments and uses its durable coordinator for at-most-once **dispatch authorization**; MSE supplies admission and dependency reports. The two published packages compose in user code — see [Try Agorail in Five Minutes](https://github.com/agorail-labs/subscription-change-quote/blob/main/docs/TRY-AGORAIL-IN-FIVE-MINUTES.md), which runs the combined consumer example against the published packages on Node 20/22. The demonstrated provider is simulated, not a certified live Chargebee integration.
 
 `ReferenceProvider.commit()` is an in-memory **commit simulator**; never call it as a read-only preflight for a real commercial mutation. Call `evaluateAdmissionOnly` and a separately authorized, provider-safe durable executor instead.
 
