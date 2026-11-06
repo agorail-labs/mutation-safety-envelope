@@ -1,7 +1,7 @@
 {
   "name": "@agorail-labs/mse-reference",
-  "version": "1.0.0-rc.1",
-  "description": "Experimental MSE v0.4 admission, dependency and outcome reference implementation; no live billing or durable execution",
+  "version": "1.0.0-rc.2",
+  "description": "Release candidate: read-only dependency admission and evidence validation for agent-driven multi-unit commerce changes; no authorization or live provider writes",
   "type": "module",
   "license": "Apache-2.0",
   "repository": {
@@ -15,13 +15,13 @@
   },
   "keywords": [
     "agentic-commerce",
-    "commercial-mutation",
-    "admission",
-    "dependencies",
-    "ai-agent",
     "mutation-safety",
-    "safety-envelope",
-    "experimental"
+    "multi-unit",
+    "admission",
+    "dependency-validation",
+    "ai-agents",
+    "conformance",
+    "reference-implementation"
   ],
   "exports": {
     ".": {
@@ -45,5 +45,8 @@
   "publishConfig": {
     "access": "public",
     "tag": "next"
+  },
+  "bugs": {
+    "url": "https://github.com/agorail-labs/mutation-safety-envelope/issues"
   }
 }

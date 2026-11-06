@@ -1,41 +1,90 @@
-# @agorail-labs/mse-reference
+<p align="center">
+  <a href="https://github.com/agorail-labs"><img src="https://raw.githubusercontent.com/agorail-labs/.github/main/assets/agorail-mark.svg" width="76" alt="Agorail Labs logo"></a>
+</p>
 
-Experimental MSE v0.4.0 admission and cross-unit dependency **reference implementation**.
+# Mutation Safety Envelope (MSE)
 
-**Not production-ready.** This package is not a billing API client or an official standard, and it does not implement authorization, durable attempt storage, duplicate business-intent detection, provider writes, atomic multi-unit changes, exactly-once execution or independently verified downstream effect finality. Real provider adapters, consistent state reads, authorization and finality evidence are deployment responsibilities.
+**Read-only admission checks for multi-unit changes initiated by AI agents.**
 
-## Installation
+[![Release candidate](https://img.shields.io/badge/release-1.0.0--rc.2-orange)](https://www.npmjs.com/package/@agorail-labs/mse-reference/v/1.0.0-rc.2) [![CI](https://github.com/agorail-labs/mutation-safety-envelope/actions/workflows/ci.yml/badge.svg)](https://github.com/agorail-labs/mutation-safety-envelope/actions/workflows/ci.yml) [![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-43853d)](https://github.com/agorail-labs/mutation-safety-envelope) [![Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](https://github.com/agorail-labs/mutation-safety-envelope/blob/main/LICENSE)
 
-Published experimentally on npm (Node 20 or 22, ESM):
+Part of **[Agorail Labs](https://github.com/agorail-labs)** · [SCQ companion package](https://www.npmjs.com/package/@agorail-labs/scq-reference) · [Five-minute combined walkthrough](https://github.com/agorail-labs/subscription-change-quote/blob/main/docs/TRY-AGORAIL-IN-FIVE-MINUTES.md)
 
-```bash
-npm install @agorail-labs/mse-reference@0.4.0-experimental.1
+> **Release candidate for independent technical evaluation; not production-certified.** MSE does not grant authorization, contact a billing provider, guarantee exactly-once effects, or provide durable business-intent execution. A passed admission check is *not* permission or proof of execution.
+
+## Why MSE?
+
+Suppose an agent proposes increasing a SaaS subscription from 100 to 120 seats, but that increase requires an analytics entitlement in the same change. Checking each individual operation independently can miss that dependency.
+
+| Proposed change | MSE response | Why |
+| :-- | :-- | :-- |
+| Increase seats only | **ADMISSION_REFUSED** | Repair witness identifies the missing entitlement |
+| Increase seats **and** include the entitlement | **ADMISSION_PASSED** | The required co-inclusion is satisfied at admission time |
+
+MSE evaluates the proposed set against caller-supplied current-state evidence **before dispatch**. It can also validate structured quote, admission, refusal, and commit-outcome records. It does not execute a live commercial change.
+
+```text
+Proposal + quote + current-state evidence
+             |
+     MSE admission check
+       /             \
+    REFUSED          PASSED
+  repair witness    evidence of admission
+       |                |
+  revise / re-quote   separate authorization + executor
+                      (provided by the integrator)
 ```
 
-For this package, use the direct ESM entrypoint:
+## Install
+
+**Node.js 22+, ESM.** Select the explicitly pre-release `next` channel:
+
+```bash
+npm install --save-exact @agorail-labs/mse-reference@next
+```
+
+Import the supported admission and validation APIs:
 
 ```js
 import {
   evaluateAdmissionOnly,
   assertAdmissionReportWellFormed,
+  assertAdmissionRefusalWellFormed,
   deriveSatisfactionRealization,
 } from "@agorail-labs/mse-reference";
 ```
 
-`evaluateAdmissionOnly(proposal, quote, evaluator, now)` reads the external binding's live admission state and validates quote-correlated coverage. It returns either `ADMISSION_PASSED` with satisfaction evidence or `ADMISSION_REFUSED` with a repair witness. It performs **no provider dispatch**. A PASSED result is only admission-time evidence, not authority, a lock, a commitment or downstream finality. The supplied evaluator owns opaque history truth and real provider state consistency.
+`evaluateAdmissionOnly(proposal, quote, evaluator, now)` returns a decision with either admission evidence or a named repair witness. The caller implements `evaluator` against trustworthy provider/current-state observations and decides separately whether a permitted action may be dispatched.
 
-The MSE schema is exported as `@agorail-labs/mse-reference/schema`.
+The JSON Schema is available from `@agorail-labs/mse-reference/schema`.
 
-## Composing with SCQ
+**Run it:** [Runnable MSE admission example](https://github.com/agorail-labs/mutation-safety-envelope/blob/main/examples/consumer/multi-unit-admission.mjs) · [MSE API reference](https://github.com/agorail-labs/mutation-safety-envelope/blob/main/docs/API-REFERENCE.md)
 
-SCQ validates subscription financial commitments and uses its durable coordinator for at-most-once **dispatch authorization**; MSE supplies admission and dependency reports. The two published packages compose in user code — see [Try Agorail in Five Minutes](https://github.com/agorail-labs/subscription-change-quote/blob/main/docs/TRY-AGORAIL-IN-FIVE-MINUTES.md), which runs the combined consumer example against the published packages on Node 20/22. The demonstrated provider is simulated, not a certified live Chargebee integration.
+## See both Agorail packages working together
 
-`ReferenceProvider.commit()` is an in-memory **commit simulator**; never call it as a read-only preflight for a real commercial mutation. Call `evaluateAdmissionOnly` and a separately authorized, provider-safe durable executor instead.
+<a href="https://github.com/agorail-labs/.github/blob/main/assets/demo/agorail-demo-90s.mp4"><img src="https://raw.githubusercontent.com/agorail-labs/.github/main/assets/demo/poster.png" width="680" alt="Agorail demonstration: admission, quote, execution uncertainty and receipt replay"></a>
 
-## Release and trust
+[Watch the 92-second narrated demo](https://github.com/agorail-labs/.github/blob/main/assets/demo/agorail-demo-90s.mp4) · [Run the five-minute demo](https://github.com/agorail-labs/subscription-change-quote/blob/main/docs/TRY-AGORAIL-IN-FIVE-MINUTES.md)
 
-- Release track: `0.4.0-experimental.1`, prerelease `experimental` tag only.
-- Source: `agorail-labs/mutation-safety-envelope`.
-- Package includes compiled ESM, TypeScript declarations, normative JSON schema, license and this document.
-- Clean-room install and artifact content checks run in CI on Node 20 and Node 22.
-- Neither MSE nor SCQ guarantees provider-side exactly-once execution or full-list-update safety.
+MSE answers **"Is this whole proposed set admissible?"** SCQ answers **"What will this subscription change cost, and what can we establish after an authorized commit?"** They compose in consumer code; neither published package depends on the other.
+
+## Guarantees and boundaries
+
+| In scope for this candidate | Outside this package |
+| :-- | :-- |
+| Pre-dispatch admission with dependency witnesses | Authentication, consent, delegation or payment authorization |
+| Well-formedness checks on admission and outcome records | Live provider writes, durable attempt storage or duplicate-intent fencing |
+| Per-unit outcome/finality representations, including unknown | Atomic multi-provider changes or provider-side exactly-once guarantees |
+| Versioned exported JSON Schema | Certification, vendor endorsement or proof of downstream finality |
+
+**`ReferenceProvider.commit()` is an in-memory simulator** and must never be treated as a read-only check before a real commercial mutation. Use `evaluateAdmissionOnly` for admission; apply a separate authorization policy and durable executor where needed.
+
+## Documentation and evaluation
+
+- [Specification and contract](https://github.com/agorail-labs/mutation-safety-envelope/tree/main/spec)
+- [Public API and migration notes](https://github.com/agorail-labs/mutation-safety-envelope/blob/main/docs/API-REFERENCE.md)
+- [Security policy](https://github.com/agorail-labs/mutation-safety-envelope/blob/main/SECURITY.md)
+- [Independent evaluation instructions](https://github.com/agorail-labs/mutation-safety-envelope/blob/main/docs/STABLE-CANDIDATE-REVIEW.md)
+- [File an issue or counterexample](https://github.com/agorail-labs/mutation-safety-envelope/issues)
+
+**Package vs. specification:** `1.0.0-rc.2` is an npm release-candidate version, not a stable production guarantee or a declaration that an external standard adopted MSE. This README describes the packaged candidate, not any unshipped bridge or provider integration.

@@ -1,8 +1,9 @@
 # Stable Release Readiness — Mutation Safety Envelope (MSE)
 
 **Status: QUALIFICATION IN PROGRESS — nothing in this document is a
-stability claim.** The only published artifact is
-`@agorail-labs/mse-reference@0.4.0-experimental.1`. This document
+stability claim.** The experimental snapshot (`0.4.0-experimental.1`) and an
+independently versioned release-candidate channel (`@next`) are published on
+npm; see the registry for the current candidate. This document
 defines the proposed stable core, the contract it would carry, and
 every known blocker with an owner and a completion criterion. It is
 part of the Agorail Stable Release Engineering Program (November
@@ -15,13 +16,12 @@ never blur them:
 
 | Artifact | Identifier | Status |
 |---|---|---|
-| Published npm package | `@agorail-labs/mse-reference@0.4.0-experimental.1` | Experimental snapshot; the only artifact external consumers can install |
-| Repository source | `0.4.0-dev.0` (root `package.json`, private) | Unreleased development line; contains changes the published snapshot does not |
+| Published npm packages | `@agorail-labs/mse-reference@experimental` and `@agorail-labs/mse-reference@next` | Frozen experimental snapshot and separately versioned RC; both installable, neither production-certified |
+| Repository source | `0.4.0-dev.0` (root `package.json`, private) | Internal build version; public exports and release semantics are selected separately in `package/` |
 | Normative specification | in-repo spec documents | Versioned separately from both packages |
 
 **Resolution rule for 1.0:** the stable scope below is defined
-against the *published* package's behavior, because that is the only
-behavior with external consumers. Any `0.4.0-dev.0` source change
+against the *published* experimental baseline and RC package behavior, using the exact published npm candidate and its compatibility baseline. Any `0.4.0-dev.0` source change
 enters the stable scope only by being (a) enumerated in the API
 compatibility report, (b) covered by the snapshot/compatibility
 tests, and (c) called out in the migration guide. Unenumerated dev
