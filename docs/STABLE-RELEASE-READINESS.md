@@ -17,7 +17,7 @@ never blur them:
 | Artifact | Identifier | Status |
 |---|---|---|
 | Published npm packages | `@agorail-labs/mse-reference@experimental` and `@agorail-labs/mse-reference@next` | Frozen experimental snapshot and separately versioned RC; both installable, neither production-certified |
-| Repository source | `0.4.0-dev.0` (root `package.json`, private) | Unreleased development line; contains changes the published snapshot does not |
+| Repository source | `0.4.0-dev.0` (root `package.json`, private) | Internal build version; public exports and release semantics are selected separately in `package/` |
 | Normative specification | in-repo spec documents | Versioned separately from both packages |
 
 **Resolution rule for 1.0:** the stable scope below is defined
