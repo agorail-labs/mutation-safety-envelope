@@ -256,6 +256,9 @@ export function isQuoteExpired(quote: MutationQuote, now: Date = new Date()): bo
  * conformant, not merely suspicious.
  */
 export function assertQuoteUnitsWellFormed(quote: MutationQuote): void {
+  if (!quote || typeof quote !== "object" || !Array.isArray(quote.units)) {
+    throw new MseViolation("MutationQuote with a units array is required.");
+  }
   const seenUnitRefs = new Set<string>();
   const seenEffectIds = new Set<string>();
   const seenUnitLocators = new Set<string>();
@@ -832,6 +835,9 @@ export function assertAdmissionReportWellFormed(
   proposal: MutationProposal,
   report: AdmissionReport
 ): void {
+  if (!report || typeof report !== "object") {
+    throw new MseViolation("AdmissionReport is required.");
+  }
   if (report.quoteId !== quote.quoteId) {
     throw new MseViolation(
       `AdmissionReport quoteId "${report.quoteId}" does not match evaluated quote "${quote.quoteId}".`
