@@ -37,12 +37,10 @@ official specification of any vendor or standards body.
 ## Install
 
 ```bash
-npm install @agorail-labs/mse-reference@experimental
-# or pin the exact audited version:
-npm install @agorail-labs/mse-reference@0.4.0-experimental.1
+npm install --save-exact @agorail-labs/mse-reference@1.0.0-rc.2
 ```
 
-Node 20 or 22. The package is ESM; import from the package root (there is
+Node 22 or later. The package is ESM; import from the package root (there is
 no `./core` subpath export):
 
 ```js
@@ -56,13 +54,17 @@ module, so import it with the `type: "json"` import attribute:
 import schema from "@agorail-labs/mse-reference/schema" with { type: "json" };
 ```
 
-### A note on dist-tags (Phase 1 rationale)
+### Package tracks
 
-npm requires every package to keep a `latest` dist-tag; removing it was
-attempted on 2026-11-02 and rejected by the registry (400). `latest`
-therefore points at the current experimental version; the `0.0.0-stage`
-placeholder exists but is untagged and is never a resolution fallback.
-Always install with `@experimental` or an exact version.
+As checked on November 13, 2026, both `latest` and `next` select
+`1.0.0-rc.2`. The `experimental` tag retains the historical
+`0.4.0-experimental.1` snapshot. Use the exact version above for this
+review; dist-tags can move independently of these instructions.
+
+The npm package is built from `package/package.json`. The private
+repository-root development version is a separate artifact and is not
+the npm package version. RC.2 remains an experimental reference
+implementation; admission grants no execution or authorization.
 
 ## Getting started
 
