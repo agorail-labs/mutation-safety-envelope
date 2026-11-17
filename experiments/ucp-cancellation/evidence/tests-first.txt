@@ -1,0 +1,52 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> agorail-ucp-cancellation-experiment@0.0.0-experimental test
+> node --test test/*.test.mjs
+
+✔ N01 unsupported capability has no declarations and mutation fails closed (4.576468ms)
+✔ N02 base Order and manage scope alone do not negotiate cancellation (1.050862ms)
+✔ N03 stale version wins over unknown target; no attempt or effect (5.192086ms)
+✔ N04 unknown target differs from structural unavailability and policy refusal (4.730821ms)
+✔ N05 pooled declaration is explicit order-only; no inference from lines (3.52778ms)
+✔ P01 cancel one unit preserves sibling and retained delivery, amount is unit amount (2.036345ms)
+✔ P02 whole-order is one atomic target, includes retained delivery without inventing a line (2.315285ms)
+✔ N06 duplicate attempt replays initial bytes-equivalent response without dispatch (3.127308ms)
+✔ N07 raw JSON reordering under same key conflicts even when parsed JSON is equal (2.2395ms)
+✔ N08 two concurrent same-version requests serialize; exactly one dispatch (2.330548ms)
+✔ N09 per-unit partial commitment evaluates an independent policy refusal (2.19866ms)
+✔ N10 atomic refusal blocks sibling, with dependency, and commits nothing (1.553959ms)
+✔ N11 pending merchant decision differs from indeterminate and refund-pending (2.423197ms)
+✔ N12 atomic review holds immediate sibling until all approval is decided (2.606764ms)
+✔ N13 expired approval cannot dispatch or mutate (1.70066ms)
+✔ N14 merchant refusal is terminal; late approval cannot revive it (1.678366ms)
+✔ N15 fulfillment during review revalidates eligibility; no blind approval commit (2.03326ms)
+✔ N16 overlapping pending attempts may be admitted; at most one commits (4.210107ms)
+✔ N17 lost response resolves by scoped lookup and current Order; no redispatch (2.34479ms)
+✔ N18 unknown lookup is read-only and never proves no execution (0.485851ms)
+✔ N19 crash after effect survives process restart and reconciles once (2.154112ms)
+✔ N20 crash before effect leaves uncertainty; missing provider record is no negative proof (2.396317ms)
+✔ N21 independent partial outcomes retain committed, refused, and unknown units (2.572432ms)
+✔ N22 known non-execution is failed; unknown execution stays indeterminate (2.78328ms)
+✔ N23 published MSE dependency refusal names missing unit before any dispatch (1.802032ms)
+✔ N24 published MSE admission pass grants no policy approval or execution (2.54442ms)
+✔ N25 revoked manage scope blocks replay despite admission having passed (6.316017ms)
+✔ N26 cross-platform lookup and get never expose another attempt (1.920962ms)
+✔ N27 uncertain refund does not become zero or reverse cancellation commitment (3.276031ms)
+✔ N28 estimated refund, affected amount, and split actual refund remain distinct (7.587582ms)
+✔ N29 wrong-currency, floating-point, and unsafe refund observations fail closed (2.07271ms)
+✔ N30 zero refund is explicitly determined only after final observation (2.315575ms)
+✔ N31 storage outage blocks claims, reads, and dispatch (0.548025ms)
+✔ N32 fence is explicit mutation; delayed original can never dispatch in the simulator (0.762578ms)
+✔ N33 expired record retains claim; neither replay nor fencing proves non-execution (1.774141ms)
+✔ N34 client blocks fresh overlapping attempt after loss and recovery performs reads only (1.509392ms)
+✔ N35 malformed, duplicate, mixed order/unit and injected authority fields are rejected (0.561215ms)
+✔ N36 unknown atomicity or target vocabulary never becomes a permissive multi-write (0.397788ms)
+✔ N37 every visible adjustment change invalidates the previous order version (1.866029ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 198.267433

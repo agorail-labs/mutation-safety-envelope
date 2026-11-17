@@ -1,0 +1,6 @@
+{
+  "ucpMain": "852e33234d80d6bcac368ff4dc9a841631a6fbb2",
+  "pr945": "1f6d526a1918bc072b49344ca8bbbddd948d7762",
+  "sourceSchemaSha256": "20ec6ba9ffb7e4b95c346574d8773b680423fd0d2be993e1840db2281121d7ac",
+  "bundling": "Subset of $defs plus localized amount ref; no UCP annotation resolution or full transport conformance claim."
+}

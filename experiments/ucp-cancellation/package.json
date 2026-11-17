@@ -1,0 +1,13 @@
+{
+  "name": "agorail-ucp-cancellation-experiment",
+  "private": true,
+  "version": "0.0.0-experimental",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test test/*.case.mjs",
+    "demo": "node demo.mjs"
+  },
+  "dependencies": { "@agorail-labs/mse-reference": "1.0.0-rc.2" },
+  "devDependencies": { "ajv": "8.17.1", "ajv-formats": "3.0.1" }
+}

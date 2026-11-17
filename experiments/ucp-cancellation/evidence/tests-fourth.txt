@@ -1,0 +1,59 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> agorail-ucp-cancellation-experiment@0.0.0-experimental test
+> node --test test/*.test.mjs
+
+✔ N01 unsupported capability has no declarations and mutation fails closed (4.460297ms)
+✔ N02 base Order and manage scope alone do not negotiate cancellation (0.926353ms)
+✔ N03 stale version wins over unknown target; no attempt or effect (1.637704ms)
+✔ N04 unknown target differs from structural unavailability and policy refusal (5.572788ms)
+✔ N05 pooled declaration is explicit order-only; no inference from lines (5.00398ms)
+✔ P01 cancel one unit preserves sibling and retained delivery, amount is unit amount (3.186997ms)
+✔ P02 whole-order is one atomic target, includes retained delivery without inventing a line (3.943477ms)
+✔ N06 duplicate attempt replays initial bytes-equivalent response without dispatch (2.830365ms)
+✔ N07 raw JSON reordering under same key conflicts even when parsed JSON is equal (2.251361ms)
+✔ N08 two concurrent same-version requests serialize; exactly one dispatch (2.795232ms)
+✔ N09 per-unit partial commitment evaluates an independent policy refusal (2.649986ms)
+✔ N10 atomic refusal blocks sibling, with dependency, and commits nothing (1.836512ms)
+✔ N11 pending merchant decision differs from indeterminate and refund-pending (2.842633ms)
+✔ N12 atomic review holds immediate sibling until all approval is decided (2.619631ms)
+✔ N13 expired approval cannot dispatch or mutate (1.820287ms)
+✔ N14 merchant refusal is terminal; late approval cannot revive it (1.754259ms)
+✔ N15 fulfillment during review revalidates eligibility; no blind approval commit (2.400603ms)
+✔ N16 overlapping pending attempts may be admitted; at most one commits (4.110716ms)
+✔ N17 lost response resolves by scoped lookup and current Order; no redispatch (4.091568ms)
+✔ N18 unknown lookup is read-only and never proves no execution (0.608278ms)
+✔ N19 crash after effect survives process restart and reconciles once (2.382707ms)
+✔ N20 crash before effect leaves uncertainty; missing provider record is no negative proof (6.489707ms)
+✔ N21 independent partial outcomes retain committed, refused, and unknown units (4.194301ms)
+✔ N22 known non-execution is failed; unknown execution stays indeterminate (7.868665ms)
+✔ N23 published MSE dependency refusal names missing unit before any dispatch (3.449979ms)
+✔ N24 published MSE admission pass grants no policy approval or execution (7.372355ms)
+✔ N25 revoked manage scope blocks replay despite admission having passed (3.292915ms)
+✔ N26 cross-platform lookup and get never expose another attempt (4.901617ms)
+✔ N27 uncertain refund does not become zero or reverse cancellation commitment (5.477677ms)
+✔ N28 estimated refund, affected amount, and split actual refund remain distinct (3.335088ms)
+✔ N29 wrong-currency, floating-point, and unsafe refund observations fail closed (3.068931ms)
+✔ N30 zero refund is explicitly determined only after final observation (3.184664ms)
+✔ N31 storage outage blocks claims, reads, and dispatch (0.887745ms)
+✔ N32 fence is explicit mutation; delayed original can never dispatch in the simulator (1.312459ms)
+✔ N33 expired record retains claim; neither replay nor fencing proves non-execution (3.460986ms)
+✔ N34 client blocks fresh overlapping attempt after loss and recovery performs reads only (2.574002ms)
+✔ N35 malformed, duplicate, mixed order/unit and injected authority fields are rejected (0.819093ms)
+✔ N36 unknown atomicity or target vocabulary never becomes a permissive multi-write (0.583841ms)
+✔ N37 every visible adjustment change invalidates the previous order version (2.985236ms)
+✔ N38 fence has a separate operation scope, replays, and rejects conflicting reuse (0.904861ms)
+✔ N39 whole-order merchant review is independent of per-unit processing modes (5.792257ms)
+✔ N40 atomic group cannot report partial commitment when one simulated backend fails (3.038876ms)
+✔ N41 hidden authoritative commit is indeterminate until its evidence is readable (3.14841ms)
+✔ S01 executable read declarations and requests match pinned PR945 fragment shapes (55.391533ms)
+✔ S02 mixed and pending records match pinned draft shapes; atomic partial success is rejected (3.769917ms)
+✔ S03 uncertain and final refunds preserve current UCP adjustment schema (19.529156ms)
+ℹ tests 46
+ℹ suites 0
+ℹ pass 46
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 271.108217

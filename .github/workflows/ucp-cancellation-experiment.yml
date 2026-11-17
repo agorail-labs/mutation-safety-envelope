@@ -1,0 +1,32 @@
+name: UCP cancellation experiment
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/ucp-cancellation/**'
+      - '.github/workflows/ucp-cancellation-experiment.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  cancellation:
+    name: Isolated cancellation tests (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24, 26]
+    defaults:
+      run:
+        working-directory: experiments/ucp-cancellation
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: experiments/ucp-cancellation/package-lock.json
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm test
+      - run: npm run demo
